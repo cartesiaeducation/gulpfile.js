@@ -1,14 +1,5 @@
 # Gulp and Gulp Starter
 
-## Dependencies
-
-```
-$ npm init
-$ npm install --save browser-sync chai del gulp gulp-autoprefixer gulp-babel gulp-changed gulp-concat gulp-cssnano gulp-data gulp-eslint gulp-iconfont gulp-if gulp-imagemin gulp-less gulp-notify gulp-nunjucks-render gulp-rename gulp-rev gulp-rev-napkin gulp-rev-replace gulp-sass gulp-sequence gulp-sizereport gulp-sourcemaps gulp-svgstore gulp-util gulp-watch lodash require-dir run-sequence
-```
-
-## Get started
-
 To start developping run `npm run development` and add `:3000` to your url.
 
 - Watches your front-end files and reloads the browser

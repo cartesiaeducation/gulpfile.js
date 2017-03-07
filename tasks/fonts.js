@@ -12,7 +12,7 @@ var paths = {
 }
 
 var fontsTask = function() {
-  return gulp.src([paths.src, '*!README.md'])
+  return gulp.src([paths.src, '*!README.md', path.join(config.root.node_modules, '/font-awesome/fonts/*')])
     .pipe(changed(paths.dest)) // Ignore unchanged files
     .pipe(gulp.dest(paths.dest))
     .pipe(browserSync.stream())

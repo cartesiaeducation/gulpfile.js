@@ -17,12 +17,12 @@ var paths = {
 }
 
 var sassTask = function () {
-  return gulp.src(paths.src)
+  return gulp.src(paths.src, { follow: true })
     .pipe(gulpif(!global.production, sourcemaps.init()))
     .pipe(sass(config.tasks.sass.options))
     .on('error', handleErrors)
     .pipe(autoprefixer(config.tasks.sass.autoprefixer))
-    .pipe(gulpif(global.production, cssnano({autoprefixer: false})))
+    .pipe(gulpif(global.production, cssnano({autoprefixer: false, zindex: false})))
     .pipe(gulpif(!global.production, sourcemaps.write(config.sourcemaps.dest)))
     .pipe(gulp.dest(paths.dest))
     .pipe(browserSync.stream())

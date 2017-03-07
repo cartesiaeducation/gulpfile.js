@@ -1,7 +1,8 @@
 {
   "root": {
     "src": "./web/dev",
-    "dest": "./web/dist"
+    "dest": "./web/dist",
+    "node_modules": "./node_modules"
   },
 
   "enabledTasks": {
@@ -22,10 +23,9 @@
   "tasks": {
     "browserSync": {
       "open": "external",
-      "host": "live.admissionsparalleles.local",
-      "proxy": "live.admissionsparalleles.local/app_dev.php",
+      "host": "www.objectif-barreau.local",
+      "proxy": "www.objectif-barreau.local/app_dev.php",
       "port": "3000",
-      "browser": "google-chrome",
       "reloadDelay": 2000,
       "notify": {
         "styles": {
@@ -60,7 +60,7 @@
       },
       "options": {
         "indentedSyntax": false,
-        "includePaths": []
+        "includePaths": ["web/bundles"]
       },
       "extensions": ["scss", "css"]
     },
