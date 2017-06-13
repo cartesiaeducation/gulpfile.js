@@ -1,0 +1,10 @@
+{
+  "projectName": "My Project Name (ex: Mes Ếtudes). Should be unique across all projects",
+  "browserSync": {
+    "options": {
+      "server": {
+        "proxy": "http://www.my-project.local/app_dev.php"
+      }
+    }
+  }
+}

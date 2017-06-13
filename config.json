@@ -4,96 +4,85 @@
     "dest": "./web/dist"
   },
 
-  "enabledTasks": {
-    "asset": ["fonts", "iconFont", "images", "svgSprite"],
-    "code": ["sass", "js"]
-  },
+  "activeTasks": [
+    "sass",
+    "js",
+    "static",
+    "images"
+  ],
 
   "sourcemaps": {
     "dest": "../maps"
   },
 
-  "rev": {
-    "assetsIgnore": [],
-    "extensions": ["css"],
-    "manifestDest": "./.."
+  "css": {
+    "autoprefixer": {
+      "browsers": ["last 3 version", "ie >= 10"]
+    },
+    "cssnano": {
+      "autoprefixer": false
+    }
   },
 
-  "tasks": {
-    "browserSync": {
-      "open": "external",
-      "host": "live.admissionsparalleles.local",
-      "proxy": "live.admissionsparalleles.local/app_dev.php",
-      "port": "3000",
-      "browser": "google-chrome",
-      "reloadDelay": 2000,
-      "notify": {
-        "styles": {
-          "top": "auto",
-          "bottom": "0"
-        }
-      }
+  "sass": {
+    "src": "scss",
+    "dest": "css",
+    "altSrc": [
+      "./vendor/cartesiaeducation/**/Resources/public/scss"
+    ],
+    "options": {
+      "indentedSyntax": false,
+      "includePaths": []
     },
+    "extensions": ["scss", "css"]
+  },
 
-    "static": {
-      "src": "static",
-      "dest": "static"
+  "less": {
+    "src": "less",
+    "dest": "css",
+    "options": {},
+    "extensions": ["less", "css"]
+  },
+
+  "js": {
+    "src": "js",
+    "dest": "js",
+    "altSrc": [
+      "./vendor/cartesiaeducation/**/Resources/public/js"
+    ],
+    "babel": {
+      "presets": ["es2015"],
+      "plugins": []
     },
+    "lint": "gulpfile.js/.eslintrc.json",
+    "extensions": ["js"]
+  },
 
-    "js": {
-      "src": "js",
-      "dest": "js",
-      "concat": "app.js",
-      "babel": {
-        "presets": ["es2015", "stage-1"],
-        "plugins": []
-      },
-      "lint": "gulpfile.js/.eslintrc.json",
-      "extensions": ["js"]
-    },
+  "images": {
+    "src": "images",
+    "dest": "images",
+    "altSrc": [
+      "./vendor/cartesiaeducation/**/Resources/public/images"
+    ],
+    "extensions": ["jpg", "png", "svg", "gif", "ico"]
+  },
 
-    "sass": {
-      "src": "scss",
-      "dest": "css",
-      "autoprefixer": {
-        "browsers": ["last 3 version", "ie >= 9"]
-      },
-      "options": {
-        "indentedSyntax": false,
-        "includePaths": []
-      },
-      "extensions": ["scss", "css"]
-    },
+  "static": {
+    "src": "static",
+    "dest": "static",
+    "altSrc": [
+      "./vendor/cartesiaeducation/**/Resources/public/static"
+    ]
+  },
 
-    "less": {
-      "src": "less",
-      "dest": "css",
-      "autoprefixer": {
-        "browsers": ["last 3 version", "ie >= 9"]
-      },
-      "options": {
-        "paths": [],
-        "plugins": []
-      },
-      "extensions": ["less", "css"]
-    },
-
-    "images": {
-      "src": "images",
-      "dest": "images",
-      "extensions": ["jpg", "png", "svg", "gif", "ico"]
-    },
-
-    "fonts": {
-      "src": "fonts",
-      "dest": "fonts",
-      "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
-    },
-
-    "svgSprite": {
-      "src": "icons",
-      "dest": "images",
-      "extensions": ["svg"]
+  "rev": {
+    "manifest": {
+      "name": "rev-manifest.json",
+      "dest": "./"
     }
+  },
+
+  "browserSync": {
+    "options": {}
   }
 }

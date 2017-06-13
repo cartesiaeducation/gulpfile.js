@@ -1,17 +1,24 @@
-/*
-  gulpfile.js
-  ===========
-  Rather than manage one giant configuration file responsible
-  for creating multiple tasks, each task has been broken out into
-  its own file in gulpfile.js/tasks. Any files in that directory get
-  automatically required below.
+var manager         = require('./lib/manager');
 
-  To add a new task, simply add a new task file that directory.
-  gulpfile.js/tasks/default.js specifies the default set of tasks to run
-  when you run `gulp`.
-*/
+var gulp            = require('gulp');
+var gulpSequence    = require('gulp-sequence');
 
-var requireDir = require('require-dir')
+require('./tasks/clean');
+require('./tasks/sass');
+require('./tasks/js');
+require('./tasks/static');
+require('./tasks/images');
+require('./tasks/watch');
+require('./tasks/rev');
 
-// Require all tasks in gulpfile.js/tasks, including subfolders
-requireDir('./tasks', { recurse: true })
+gulp.task('build', function(done) {
+    gulpSequence('clean', manager.getActiveTasks('dev'), done);
+});
+
+gulp.task('dev', function(done) {
+    gulpSequence('build', 'watch', done);
+});
+
+gulp.task('prod', function(done) {
+    gulpSequence('clean', manager.getActiveTasks('prod'), 'rev', done);
+});

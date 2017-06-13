@@ -1,30 +1,48 @@
-var config       = require('../config');
-if(!config.tasks.less) return;
+var config       = require('../lib/manager').getConfig();
 
-var gulp         = require('gulp');
-var gulpif       = require('gulp-if');
-var browserSync  = require('browser-sync');
-var less         = require('gulp-less');
-var sourcemaps   = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
 var path         = require('path');
-var cssnano      = require('gulp-cssnano');
+var gulp         = require('gulp');
+var less         = require('gulp-less');
+var postcss      = require('gulp-postcss');
+var sourcemaps   = require('gulp-sourcemaps');
+var cssnano      = require('cssnano');
+var autoprefixer = require('autoprefixer');
+var browserSync  = require('browser-sync');
 
-var paths = {
-  src: path.join(config.root.src, config.tasks.less.src, '/*.{' + config.tasks.less.extensions + '}'),
-  dest: path.join(config.root.dest, config.tasks.less.dest)
+var src = path.join(config.root.src, config.less.src, '/**/*.{' + config.less.extensions + '}');
+var dest = path.join(config.root.dest, config.less.dest);
+
+function dev() {
+    return gulp.src(src)
+        .pipe(sourcemaps.init())
+        .pipe(less(config.less.options))
+        .pipe(postcss([
+            autoprefixer(config.css.autoprefixer)
+        ]))
+        .pipe(sourcemaps.write(config.sourcemaps.dest))
+        .pipe(gulp.dest(dest));
+}
+
+function prod() {
+    return gulp.src(src)
+        .pipe(less(config.less.options))
+        .pipe(postcss([
+            autoprefixer(config.css.autoprefixer),
+            cssnano(config.css.cssnano)
+        ]))
+        .pipe(gulp.dest(dest));
+}
+
+function watch() {
+    gulp.watch(src, function() {
+        return dev().pipe(browserSync.get(config.projectName).stream());
+    });
+}
+
+gulp.task('less:dev', dev);
+gulp.task('less:prod', prod);
+gulp.task('less:watch', watch);
+
+exports.getSrc = function() {
+    return src;
 };
-
-var lessTask = function () {
-  return gulp.src(paths.src)
-    .pipe(gulpif(!global.production, sourcemaps.init()))
-    .pipe(less(config.tasks.less.options))
-    .pipe(autoprefixer(config.tasks.less.autoprefixer))
-    .pipe(gulpif(global.production, cssnano({autoprefixer: false})))
-    .pipe(gulpif(!global.production, sourcemaps.write()))
-    .pipe(gulp.dest(paths.dest))
-    .pipe(browserSync.stream())
-};
-
-gulp.task('less', lessTask);
-module.exports = lessTask;

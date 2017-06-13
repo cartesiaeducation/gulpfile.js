@@ -1,21 +1,10 @@
-var config = require('../config')
-var gulp   = require('gulp')
-var path   = require('path')
-var watch  = require('gulp-watch')
+var manager              = require('../lib/manager');
+var config               = manager.getConfig();
+var watchableTasks       = manager.getActiveTasks('watch');
 
-var watchTask = function() {
-  var watchableTasks = ['fonts', 'iconFont', 'images', 'svgSprite', 'html', 'js', 'sass', 'less']
+var gulp        = require('gulp');
+var browserSync = require('browser-sync').create(config.projectName);
 
-  watchableTasks.forEach(function(taskName) {
-    var task = config.tasks[taskName]
-    if(task) {
-      var glob = path.join(config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}')
-      watch(glob, function() {
-       require('./' + taskName)()
-      })
-    }
-  })
-}
-
-gulp.task('watch', ['browserSync'], watchTask)
-module.exports = watchTask
+gulp.task('watch', watchableTasks, function() {
+    browserSync.init(config.browserSync.options);
+});
