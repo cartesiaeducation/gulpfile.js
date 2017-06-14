@@ -13,7 +13,7 @@ var dest    = path.join(config.root.dest);
 var excludeStatic = "!" + require('./static').getDest() + '/**/*';
 
 gulp.task('rev', function() {
-    return gulp.src([src, excludeStatic])
+    return gulp.src([src, excludeStatic], {base: config.rev.base})
         .pipe(rev())
         .pipe(gulp.dest(dest))
         .pipe(revNapkin({verbose: false})) // Remove unreved files

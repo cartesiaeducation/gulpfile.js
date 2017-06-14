@@ -76,6 +76,7 @@
   },
 
   "rev": {
+    "base": "./web",
     "manifest": {
       "name": "rev-manifest.json",
       "dest": "./"
