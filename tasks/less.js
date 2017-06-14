@@ -9,32 +9,31 @@ var cssnano      = require('cssnano');
 var autoprefixer = require('autoprefixer');
 var browserSync  = require('browser-sync');
 
-var src = path.join(config.root.src, config.less.src, '/**/*.{' + config.less.extensions + '}');
-var dest = path.join(config.root.dest, config.less.dest);
+var paths = require('../lib/helpers').getTaskPaths('less');
 
 function dev() {
-    return gulp.src(src)
+    return gulp.src(paths.src)
         .pipe(sourcemaps.init())
         .pipe(less(config.less.options))
         .pipe(postcss([
             autoprefixer(config.css.autoprefixer)
         ]))
         .pipe(sourcemaps.write(config.sourcemaps.dest))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(paths.dest));
 }
 
 function prod() {
-    return gulp.src(src)
+    return gulp.src(paths.src)
         .pipe(less(config.less.options))
         .pipe(postcss([
             autoprefixer(config.css.autoprefixer),
             cssnano(config.css.cssnano)
         ]))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(paths.dest));
 }
 
 function watch() {
-    gulp.watch(src, function() {
+    gulp.watch(paths.watchSrc, function() {
         return dev().pipe(browserSync.get(config.projectName).stream());
     });
 }
@@ -42,7 +41,3 @@ function watch() {
 gulp.task('less:dev', dev);
 gulp.task('less:prod', prod);
 gulp.task('less:watch', watch);
-
-exports.getSrc = function() {
-    return src;
-};

@@ -9,39 +9,31 @@ var cssnano      = require('cssnano');
 var autoprefixer = require('autoprefixer');
 var browserSync  = require('browser-sync');
 
-var extensionsGlob = '/**/*.{' + config.sass.extensions + '}';
-
-var src = config.sass.altSrc.map(function(altPath) {
-    return path.join(altPath, extensionsGlob);
-});
-
-src.push(path.join(config.root.src, config.sass.src, extensionsGlob));
-
-var dest = path.join(config.root.dest, config.sass.dest);
+var paths = require('../lib/helpers').getTaskPaths('sass');
 
 function dev() {
-    return gulp.src(src)
+    return gulp.src(paths.src)
         .pipe(sourcemaps.init())
         .pipe(sass(config.sass.options).on('error', sass.logError))
         .pipe(postcss([
             autoprefixer(config.css.autoprefixer)
         ]))
         .pipe(sourcemaps.write(config.sourcemaps.dest))
-        .pipe(gulp.dest(dest))
+        .pipe(gulp.dest(paths.dest))
 }
 
 function prod() {
-    return gulp.src(src)
+    return gulp.src(paths.src)
         .pipe(sass(config.sass.options).on('error', sass.logError))
         .pipe(postcss([
             autoprefixer(config.css.autoprefixer),
             cssnano(config.css.cssnano)
         ]))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(paths.dest));
 }
 
 function watch() {
-    gulp.watch(src, function() {
+    gulp.watch(paths.watchSrc, function() {
         return dev().pipe(browserSync.get(config.projectName).stream());
     });
 }
@@ -49,7 +41,3 @@ function watch() {
 gulp.task('sass:dev', dev);
 gulp.task('sass:prod', prod);
 gulp.task('sass:watch', watch);
-
-exports.getSrc = function() {
-    return src;
-};
