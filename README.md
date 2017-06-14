@@ -4,10 +4,10 @@
 
 ### Installation
 
-- \[Clone submodule]
+- `git submodule add git@github.com:cartesiaeducation/gulpfile.js.git`
+- `npm install --save ./gulpfile.js`
 - `cp gulpfile.js/gulpconfig.template.json ./gulpconfig.json`
-- Replace gulpconfig values with real ones
-- Add new properties or override those from *gulpfile.js/config.json* if needed
+- Customize gulpconfig.json as needed
 - Add each needed `npm run …` command to project's *package.json* "scripts". See [Kamehameha](#kamehameha)
 
 ### Kamehameha
