@@ -1,0 +1,34 @@
+{
+  "name": "gulpfile.js",
+  "version": "1.0.0",
+  "description": "## Get started",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "prod": "gulp prod",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "clean": "gulp clean",
+    "sass": "gulp sass:dev",
+    "sass:watch": "gulp sass:watch",
+    "js": "gulp js:dev",
+    "js:watch": "gulp js:watch",
+    "less": "gulp less:dev",
+    "less:watch": "gulp less:watch",
+    "images": "gulp images:dev",
+    "images:watch": "gulp images:watch",
+    "static": "gulp static:dev",
+    "static:watch": "gulp static:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cartesiaeducation/gulpfile.js.git"
+  },
+  "author": "Andréa Maugars",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cartesiaeducation/gulpfile.js/issues"
+  },
+  "homepage": "https://github.com/cartesiaeducation/gulpfile.js#readme"
+}
