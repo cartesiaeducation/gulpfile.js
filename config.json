@@ -83,6 +83,8 @@
   },
 
   "browserSync": {
-    "options": {}
+    "options": {
+      "open": "external"
+    }
   }
 }
