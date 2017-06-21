@@ -30,18 +30,18 @@
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/scss"
     ],
+    "extensions": ["scss", "css"],
     "options": {
       "indentedSyntax": false,
       "includePaths": []
-    },
-    "extensions": ["scss", "css"]
+    }
   },
 
   "less": {
     "src": "less",
     "dest": "css",
-    "options": {},
-    "extensions": ["less", "css"]
+    "extensions": ["less", "css"],
+    "options": {}
   },
 
   "js": {
@@ -50,12 +50,22 @@
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/js"
     ],
+    "extensions": ["js"],
     "babel": {
       "presets": ["es2015"],
       "plugins": []
     },
-    "lint": "gulpfile.js/.eslintrc.json",
-    "extensions": ["js"]
+    "lint": "gulpfile.js/.eslintrc.json"
+  },
+
+  "jsx": {
+    "src": "jsx",
+    "dest": "js",
+    "altSrc": [
+      "./vendor/cartesiaeducation/**/Resources/public/jsx"
+    ],
+    "extensions": ["js"],
+    "entry": "index.js"
   },
 
   "images": {

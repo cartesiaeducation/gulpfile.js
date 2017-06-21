@@ -6,6 +6,7 @@ var gulpSequence    = require('gulp-sequence');
 require('./tasks/clean');
 require('./tasks/sass');
 require('./tasks/js');
+require('./tasks/jsx');
 require('./tasks/static');
 require('./tasks/images');
 require('./tasks/watch');
