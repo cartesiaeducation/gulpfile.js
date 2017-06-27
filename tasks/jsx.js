@@ -25,6 +25,6 @@ function watch() {
     });
 }
 
-gulp.task('webpack:dev', dev);
-gulp.task('webpack:prod', prod);
-gulp.task('webpack:watch', watch);
+gulp.task('jsx:dev', dev);
+gulp.task('jsx:prod', prod);
+gulp.task('jsx:watch', watch);
