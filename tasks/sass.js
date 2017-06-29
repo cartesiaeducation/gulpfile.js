@@ -33,8 +33,11 @@ function prod() {
 }
 
 function watch() {
+    const witoutSourceMaps = {match: '**/*.css' };
+
     gulp.watch(paths.watchSrc, function() {
-        return dev().pipe(browserSync.get(config.projectName).stream());
+        // TODO: REMOVE GULP DEST. BROWSERSYNC DOESNT STREAM TO BROWSER WITHOUT IT
+        return dev().pipe(browserSync.get(config.projectName).stream(witoutSourceMaps)).pipe(gulp.dest('./web/dist/dump'));
     });
 }
 
