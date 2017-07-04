@@ -11,8 +11,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
+                options: {
+                    presets: ['es2015', 'react'],
+                    plugins: ["transform-object-rest-spread"]
                 }
             }
         ]
