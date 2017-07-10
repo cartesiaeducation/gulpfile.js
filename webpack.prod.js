@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 module.exports = {
     output: {
-        filename: 'app.js'
+        filename: "[name].js"
     },
     module: {
         rules: [
