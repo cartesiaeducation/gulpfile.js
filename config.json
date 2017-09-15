@@ -53,7 +53,7 @@
     "extensions": ["js"],
     "babel": {
       "presets": ["es2015"],
-      "plugins": ["transform-object-rest-spread"]
+      "plugins": []
     },
     "lint": "gulpfile.js/.eslintrc.json"
   },
