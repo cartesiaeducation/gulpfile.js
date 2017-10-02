@@ -5,7 +5,7 @@
 ### Installation
 
 - `git submodule add git@github.com:cartesiaeducation/gulpfile.js.git`
-- `npm install --save ./gulpfile.js`
+- `npm install --save ./gulpfile.js/gulpfile.js-*.tgz` (REPLACE * by the latest version)
 - `cp gulpfile.js/gulpconfig.template.json ./gulpconfig.json`
 - Customize gulpconfig.json as needed
 - Add each needed `npm run …` command to project's *package.json* "scripts". See [Kamehameha](#kamehameha)
