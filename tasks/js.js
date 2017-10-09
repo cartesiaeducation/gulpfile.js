@@ -13,16 +13,16 @@ var paths = require('../lib/helpers').getTaskPaths('js');
 function dev() {
     return gulp.src(paths.src)
         .pipe(sourcemaps.init())
-        .pipe(include())
         .pipe(babel(config.js.babel))
+        .pipe(include())
         .pipe(sourcemaps.write(config.sourcemaps.dest))
         .pipe(gulp.dest(paths.dest));
 }
 
 function prod() {
     return gulp.src(paths.src)
-        .pipe(include())
         .pipe(babel(config.js.babel))
+        .pipe(include())
         .pipe(uglify())
         .pipe(gulp.dest(paths.dest));
 }
