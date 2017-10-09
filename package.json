@@ -1,6 +1,6 @@
 {
   "name": "gulpfile.js",
-  "version": "1.0.4-3wp",
+  "version": "1.0.5-3wp",
   "description": "The Saiyan Build Project",
   "main": "index.js",
   "scripts": {
