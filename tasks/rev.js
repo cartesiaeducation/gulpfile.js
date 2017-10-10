@@ -1,5 +1,6 @@
-var manager     = require('../lib/manager');
-var config      = manager.getConfig();
+var manager      = require('../lib/manager');
+var config       = manager.getConfig();
+var projectRoot  = manager.getProjectRoot();
 
 var gulp        = require('gulp');
 var rev         = require('gulp-rev');
@@ -18,7 +19,7 @@ gulp.task('rev', function() {
         .pipe(gulp.dest(base))
         .pipe(revNapkin({verbose: false})) // Remove unreved files
         .pipe(rev.manifest(config.rev.manifest))
-        .pipe(gulp.dest(config.rev.manifest.dest));
+        .pipe(gulp.dest(path.join(projectRoot, config.rev.manifest.dest)));
 });
 
 // File output explanation

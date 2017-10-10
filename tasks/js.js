@@ -43,7 +43,7 @@ function webpackConfig(env) {
 
     return Object.assign(require(`../webpack.${env}.js`), {
         entry: typeof entry === 'string'
-            ? path.resolve(config.root.src, config.js.src, entry)
+            ? path.resolve(projectRoot, config.root.src, config.js.src, entry)
             : Object.keys(entry).reduce(function(previous, current) {
                 previous[current] = path.resolve(projectRoot, config.root.src, config.js.src, entry[current]);
                 return previous;
