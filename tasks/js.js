@@ -1,4 +1,6 @@
-var config       = require('../lib/manager').getConfig();
+var manager      = require('../lib/manager');
+var config       = manager.getConfig();
+var projectRoot  = manager.getProjectRoot();
 
 var gulp         = require('gulp');
 var webpack      = require('webpack-stream');
