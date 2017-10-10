@@ -5,9 +5,8 @@ var projectRoot  = manager.getProjectRoot();
 var gulp        = require('gulp');
 var rev         = require('gulp-rev');
 var path        = require('path');
-var revNapkin   = require('gulp-rev-napkin');
 
-var src     = path.join(config.root.dest, '/**/*');
+var src     = path.join(projectRoot, config.root.dest, '/**/*');
 var base    = config.rev.base;
 
 // Some static files should not be reved
@@ -17,7 +16,6 @@ gulp.task('rev', function() {
     return gulp.src([src, excludeStatic], {base: base})
         .pipe(rev())
         .pipe(gulp.dest(base))
-        .pipe(revNapkin({verbose: false})) // Remove unreved files
         .pipe(rev.manifest(config.rev.manifest))
         .pipe(gulp.dest(path.join(projectRoot, config.rev.manifest.dest)));
 });

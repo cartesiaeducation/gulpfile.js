@@ -1,4 +1,6 @@
-var config       = require('../lib/manager').getConfig();
+var manager      = require('../lib/manager');
+var config       = manager.getConfig();
+var projectRoot  = manager.getProjectRoot();
 
 var gulp         = require('gulp');
 var webpack      = require('webpack-stream');
@@ -34,12 +36,12 @@ gulp.task('jsx:watch', watch);
 function webpackConfig(env) {
     var entry = config.jsx.entry;
 
-     return Object.assign(require(`../webpack.${env}.js`), {
-             entry: typeof entry === 'string'
-                 ? path.resolve(config.root.src, config.jsx.src, entry)
-                 : Object.keys(entry).reduce(function(previous, current) {
-                     previous[current] = path.resolve(config.root.src, config.jsx.src, entry[current]);
-                     return previous;
-                 }, {})
-         });
+    return Object.assign(require(`../webpack.${env}.js`), {
+        entry: typeof entry === 'string'
+            ? path.resolve(projectRoot, config.root.src, config.jsx.src, entry)
+            : Object.keys(entry).reduce(function(previous, current) {
+                previous[current] = path.resolve(projectRoot, config.root.src, config.jsx.src, entry[current]);
+                return previous;
+            }, {})
+    });
 }
