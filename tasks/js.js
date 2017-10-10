@@ -1,29 +1,22 @@
 var config       = require('../lib/manager').getConfig();
 
-var path         = require('path');
 var gulp         = require('gulp');
-var babel        = require('gulp-babel');
-var sourcemaps   = require('gulp-sourcemaps');
-var include      = require("gulp-include");
-var uglify       = require('gulp-uglify');
+var webpack      = require('webpack-stream');
+var webpack2     = require('webpack'); // Force Webpack 2 usage
 var browserSync  = require('browser-sync');
+var path         = require('path');
 
 var paths = require('../lib/helpers').getTaskPaths('js');
 
 function dev() {
     return gulp.src(paths.src)
-        .pipe(sourcemaps.init())
-        .pipe(babel(config.js.babel))
-        .pipe(include())
-        .pipe(sourcemaps.write(config.sourcemaps.dest))
+        .pipe(webpack(webpackConfig('dev'), webpack2))
         .pipe(gulp.dest(paths.dest));
 }
 
 function prod() {
     return gulp.src(paths.src)
-        .pipe(babel(config.js.babel))
-        .pipe(include())
-        .pipe(uglify())
+        .pipe(webpack(webpackConfig('prod'), webpack2))
         .pipe(gulp.dest(paths.dest));
 }
 
@@ -41,8 +34,17 @@ function watch() {
 gulp.task('js:dev', dev);
 gulp.task('js:prod', prod);
 gulp.task('js:watch', watch);
-// With method 1
-// gulp.task('js:reload', ['js:dev'], function(done) {
-//     browserSync.get(config.projectName).reload();
-//     done();
-// });
+
+// TODO: Create high level config in lib/manager
+function webpackConfig(env) {
+    var entry = config.js.entry;
+
+    return Object.assign(require(`../webpack.${env}.js`), {
+        entry: typeof entry === 'string'
+            ? path.resolve(config.root.src, config.js.src, entry)
+            : Object.keys(entry).reduce(function(previous, current) {
+                previous[current] = path.resolve(projectRoot, config.root.src, config.js.src, entry[current]);
+                return previous;
+            }, {})
+    });
+}

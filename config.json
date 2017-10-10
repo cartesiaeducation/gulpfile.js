@@ -54,8 +54,7 @@
     "babel": {
       "presets": ["es2015"],
       "plugins": []
-    },
-    "lint": "gulpfile.js/.eslintrc.json"
+    }
   },
 
   "jsx": {
