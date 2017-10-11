@@ -16,6 +16,19 @@ module.exports = {
                     presets: ['es2015', 'react'],
                     plugins: ["transform-object-rest-spread"]
                 }
+            },
+            {
+                test: require.resolve('bootstrap'),
+                use: 'imports-loader?jQuery=jquery,Tether=tether'
+            },
+            {
+                test: require.resolve('bootstrap'),
+                use: 'imports-loader?jQuery=jquery,window.Tether=tether'
+            },
+            {
+                test: /(vendor|bundles)\/cartesia/,
+                exclude: /admin/,
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             }
         ]
     },
@@ -23,11 +36,6 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            "window.Tether": 'tether'
-        })
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

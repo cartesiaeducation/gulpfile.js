@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = {
     output: {
         filename: "[name].js"
@@ -19,7 +17,17 @@ module.exports = {
             {
                 test: require.resolve('bootstrap'),
                 use: 'imports-loader?jQuery=jquery,Tether=tether'
+            },
+            {
+                test: require.resolve('bootstrap'),
+                use: 'imports-loader?jQuery=jquery,window.Tether=tether'
+            },
+            {
+                test: /(vendor|bundles)\/cartesia/,
+                exclude: /admin/,
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             }
         ]
-    }
+    },
+    devtool: "source-map"
 };
