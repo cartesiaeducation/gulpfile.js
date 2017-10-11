@@ -4,11 +4,20 @@
 
 ### Installation
 
-- `git submodule add git@github.com:cartesiaeducation/gulpfile.js.git`
-- `npm install --save ./gulpfile.js/gulpfile.js-*.tgz` (REPLACE * by the latest version)
-- `cp gulpfile.js/gulpconfig.template.json ./gulpconfig.json`
+- `npm install git+ssh://git@github.com/cartesiaeducation/gulpfile.js.git#vX.X.X` with X.X.X the version you desire
+- `cp ./node_modules/gulpfile.js/gulpconfig.template.json ./gulpconfig.json`
 - Customize gulpconfig.json as needed
-- Add each needed `npm run …` command to project's *package.json* "scripts". See [Kamehameha](#kamehameha)
+- Add each task to your project's package.json e.g. :
+```
+  "scripts": {
+    "dev": "gulp dev --gulpfile ./node_modules/gulpfile.js",
+    "prod": "gulp prod --gulpfile ./node_modules/gulpfile.js",
+    "build": "gulp build --gulpfile ./node_modules/gulpfile.js",
+    "watch": "gulp watch --gulpfile ./node_modules/gulpfile.js",
+    "clean": "gulp clean --gulpfile ./node_modules/gulpfile.js"
+  },
+```
+- You can now use `npm run myTask`
 
 ### Kamehameha
 
@@ -34,9 +43,3 @@
 - "watch" initializes live reloading and requires all watch tasks
 - "rev" adds revision to all files except static and creates rev-manifest.json
  
-## Improvements
-
-- Move to Gulp 4
-- Compress images only once
-- "mytask:prod" should trigger revision
-- "mytask:watch" should trigger live reloading
