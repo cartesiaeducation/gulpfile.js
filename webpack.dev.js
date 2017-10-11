@@ -15,14 +15,11 @@ module.exports = {
                     plugins: ["transform-object-rest-spread"],
                     cacheDirectory: true
                 }
+            },
+            {
+                test: require.resolve('bootstrap'),
+                use: 'imports-loader?jQuery=jquery,Tether=tether'
             }
         ]
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            "window.Tether": 'tether'
-        })
-    ]
+    }
 };
