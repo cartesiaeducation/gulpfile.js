@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = {
     output: {
         filename: "[name].js"
@@ -17,8 +15,17 @@ module.exports = {
                 }
             },
             {
-                test: require.resolve('bootstrap'),
-                use: 'imports-loader?jQuery=jquery,Tether=tether'
+                test: require.resolve('jquery'),
+                use: [
+                    { loader: 'expose-loader', options: 'jQuery' },
+                    { loader: 'expose-loader', options: '$' }
+                ]
+            },
+            {
+                test: require.resolve('tether'),
+                use: [
+                    { loader: 'expose-loader', options: 'Tether' }
+                ]
             }
         ]
     }
