@@ -16,6 +16,19 @@ module.exports = {
                     presets: ['es2015', 'react'],
                     plugins: ["transform-object-rest-spread"]
                 }
+            },
+            {
+                test: require.resolve('jquery'),
+                use: [
+                    { loader: 'expose-loader', options: 'jQuery' },
+                    { loader: 'expose-loader', options: '$' }
+                ]
+            },
+            {
+                test: require.resolve('tether'),
+                use: [
+                    { loader: 'expose-loader', options: 'Tether' }
+                ]
             }
         ]
     },
