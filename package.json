@@ -4,24 +4,7 @@
   "description": "The Saiyan Build Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev",
-    "prod": "gulp prod",
-    "build": "gulp build",
-    "watch": "gulp watch",
-    "clean": "gulp clean",
-    "sass": "gulp sass:dev",
-    "sass:watch": "gulp sass:watch",
-    "js": "gulp js:dev",
-    "js:watch": "gulp js:watch",
-    "jsx": "gulp jsx:dev",
-    "jsx:watch": "gulp jsx:watch",
-    "less": "gulp less:dev",
-    "less:watch": "gulp less:watch",
-    "images": "gulp images:dev",
-    "images:watch": "gulp images:watch",
-    "static": "gulp static:dev",
-    "static:watch": "gulp static:watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
