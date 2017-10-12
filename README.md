@@ -27,7 +27,7 @@
 - Commit changes in gulpfile.js
 - Update version with `npm version major|minor|patch|myCustomVersion` (creates git tag with version, see npm doc)
 - Push newly created git tags and changes with `git push --tags origin master`
-- Run `npm update gulpfile.js#vX.X.X` in your project
+- Run `npm install git+ssh://git@github.com/cartesiaeducation/gulpfile.js.git#vX.X.X` in your project
 
 Note:
 If you want to try changes rapidly without versioning, you can remove `#myVersion` in your project's gulpfile npm dependency and run `npm update gulpfile.js`. This will pull gulpfile.js origin master.
