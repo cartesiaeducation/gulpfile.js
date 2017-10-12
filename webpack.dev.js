@@ -26,6 +26,10 @@ module.exports = {
                 use: [
                     { loader: 'expose-loader', options: 'Tether' }
                 ]
+            },
+            {
+                test: require.resolve('cropper'),
+                use: "imports-loader?jQuery=>window.jQuery,define=>false,require=>false,exports=>false"
             }
         ]
     },

@@ -6,8 +6,12 @@
 
 - `npm install git+ssh://git@github.com/cartesiaeducation/gulpfile.js.git#vX.X.X` with X.X.X the version you desire
 - `cp ./node_modules/gulpfile.js/gulpconfig.template.json ./gulpconfig.json`
-- Customize gulpconfig.json as needed
-- Add each task to your project's package.json e.g. :
+- Customize gulpconfig.json:
+    - Change project name
+    - Change BrowserSync options
+    - Specify needed tasks
+    - Add Javascript entry points (Webpack)
+- Add each task to your project's package.json e.g.:
 ```
   "scripts": {
     "dev": "gulp dev --gulpfile ./node_modules/gulpfile.js",
@@ -18,6 +22,9 @@
   },
 ```
 - You can now use `npm run myTask`
+
+### Update
+- `npm update gulpfile.js#vX.X.X`
 
 ### Kamehameha
 
