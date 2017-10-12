@@ -18,20 +18,20 @@ module.exports = {
                 }
             },
             {
-                test: require.resolve('jquery'),
+                test: resolve('jquery'),
                 use: [
                     { loader: 'expose-loader', options: 'jQuery' },
                     { loader: 'expose-loader', options: '$' }
                 ]
             },
             {
-                test: require.resolve('tether'),
+                test: resolve('tether'),
                 use: [
                     { loader: 'expose-loader', options: 'Tether' }
                 ]
             },
             {
-                test: require.resolve('cropper'),
+                test: resolve('cropper'),
                 use: "imports-loader?jQuery=>window.jQuery,define=>false,require=>false,exports=>false"
             }
         ]
@@ -43,3 +43,11 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin()
     ]
 };
+
+function resolve(module) {
+    return path => {
+        let modulePath = null;
+        try { modulePath = require.resolve(module) } catch (e) {}
+        return modulePath === path;
+    }
+}
