@@ -36,11 +36,6 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            "window.Tether": 'tether'
-        })
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };
