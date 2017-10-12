@@ -24,9 +24,16 @@
 - You can now use `npm run myTask`
 
 ### Update
-- `npm update gulpfile.js#vX.X.X`
+- Commit changes in gulpfile.js
+- Update version with `npm version major|minor|patch|myCustomVersion` (creates git tag with version, see npm doc)
+- Push newly created git tags and changes with `git push --tags origin master`
+- Run `npm update gulpfile.js#vX.X.X` in your project
 
-### Kamehameha
+Note:
+If you want to try changes rapidly without versioning, you can remove `#myVersion` in your project's gulpfile npm dependency and run `npm update gulpfile.js`. This will pull gulpfile.js origin master.
+
+### Tasks command conventions
+You have to manually add each gulp task in npm scripts.
 
 - Development mode : `npm run dev` (build, watch)
 - Production mode : `npm run prod` (optimized build)
@@ -38,7 +45,7 @@
 - Clean builds : `npm run clean` (deletes dist folder)
 - Create revision : `npm run rev` (testing purpose only)
 
-## How the fuck does this work ?
+## How the fuck does this work?
 
 - You type `npm run dev` in the terminal
 - It looks for "dev" key in "scripts" within the project's *package.json* and run its command, here `gulp dev`
