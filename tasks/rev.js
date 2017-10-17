@@ -7,7 +7,7 @@ var rev         = require('gulp-rev');
 var path        = require('path');
 
 var src     = path.join(projectRoot, config.root.dest, '/**/*');
-var base    = config.rev.base;
+var base    = path.join(projectRoot, config.rev.base);
 
 // Some static files should not be reved
 var excludeStatic = "!" + require('./static').getDest() + '/**/*';
