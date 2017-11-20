@@ -20,7 +20,8 @@
       "browsers": ["last 3 version", "ie >= 10"]
     },
     "cssnano": {
-      "autoprefixer": false
+      "autoprefixer": false,
+      "zindex": false
     }
   },
 
