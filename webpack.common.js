@@ -32,9 +32,6 @@ module.exports = {
                 use: "imports-loader?jQuery=>window.jQuery,$=>window.jQuery,define=>false,require=>false,exports=>false,this=>window"
             }
         ]
-    },
-    resolve: {
-        symlinks: false
     }
 };
 
