@@ -30,6 +30,10 @@ module.exports = {
             {
                 test: resolve('cropper'),
                 use: "imports-loader?jQuery=>window.jQuery,$=>window.jQuery,define=>false,require=>false,exports=>false,this=>window"
+            },
+            {
+                test: /packery/,
+                loader: 'imports-loader?define=>false&this=>window'
             }
         ]
     }
