@@ -12,7 +12,7 @@ var browserSync  = require('browser-sync');
 var paths = require('../lib/helpers').getTaskPaths('sass');
 
 function dev() {
-    return gulp.src(paths.src)
+    return gulp.src(paths.devSrc)
         .pipe(sourcemaps.init())
         .pipe(sass(config.sass.options).on('error', sass.logError))
         .pipe(postcss([
