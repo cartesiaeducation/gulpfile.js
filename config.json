@@ -52,11 +52,7 @@
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/js"
     ],
-    "extensions": ["js"],
-    "babel": {
-      "presets": ["es2015"],
-      "plugins": []
-    }
+    "extensions": ["js"]
   },
 
   "jsx": {

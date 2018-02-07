@@ -9,8 +9,6 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015', 'react'],
-                    plugins: ["transform-object-rest-spread"],
                     cacheDirectory: true
                 }
             },
@@ -32,7 +30,7 @@ module.exports = {
                 use: "imports-loader?jQuery=>window.jQuery,$=>window.jQuery,define=>false,require=>false,exports=>false,this=>window"
             },
             {
-                test: /packery/,
+                test: resolve('packery'),
                 loader: 'imports-loader?define=>false&this=>window'
             }
         ]
