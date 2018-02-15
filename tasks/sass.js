@@ -1,18 +1,17 @@
-var config       = require('../lib/manager').getConfig();
+const config       = require('../lib/manager').getConfig();
 
-var path         = require('path');
-var gulp         = require('gulp');
-var sass         = require('gulp-sass');
-var postcss      = require('gulp-postcss');
-var sourcemaps   = require('gulp-sourcemaps');
-var cssnano      = require('cssnano');
-var autoprefixer = require('autoprefixer');
-var browserSync  = require('browser-sync');
+const gulp         = require('gulp');
+const sass         = require('gulp-sass');
+const postcss      = require('gulp-postcss');
+const sourcemaps   = require('gulp-sourcemaps');
+const cssnano      = require('cssnano');
+const autoprefixer = require('autoprefixer');
+const browserSync  = require('browser-sync');
 
-var paths = require('../lib/helpers').getTaskPaths('sass');
+const paths = require('../lib/helpers').getTaskPaths('sass');
 
 function dev() {
-    return gulp.src(paths.src)
+    return gulp.src(paths.devSrc)
         .pipe(sourcemaps.init())
         .pipe(sass(config.sass.options).on('error', sass.logError))
         .pipe(postcss([

@@ -28,6 +28,10 @@
   "sass": {
     "src": "scss",
     "dest": "css",
+    "devEntry": [
+      "objectif-barreau.scss",
+      "objectif-crpe.scss"
+    ],
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/scss"
     ],
