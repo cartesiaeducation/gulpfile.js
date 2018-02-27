@@ -17,6 +17,7 @@
 
   "css": {
     "autoprefixer": {
+      "browsers": ["last 3 version", "ie >= 10"],
       "grid": true
     },
     "cssnano": {
@@ -28,10 +29,6 @@
   "sass": {
     "src": "scss",
     "dest": "css",
-    "devEntry": [
-      "objectif-barreau.scss",
-      "objectif-crpe.scss"
-    ],
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/scss"
     ],
@@ -55,7 +52,11 @@
     "altSrc": [
       "./vendor/cartesiaeducation/**/Resources/public/js"
     ],
-    "extensions": ["js"]
+    "extensions": ["js"],
+    "babel": {
+      "presets": ["es2015"],
+      "plugins": []
+    }
   },
 
   "jsx": {
