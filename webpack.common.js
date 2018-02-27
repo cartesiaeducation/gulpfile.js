@@ -32,7 +32,14 @@ module.exports = {
                 use: "imports-loader?jQuery=>window.jQuery,$=>window.jQuery,define=>false,require=>false,exports=>false,this=>window"
             },
             {
-                test: /packery/,
+                test: resolve('parsleyjs'),
+                use: [
+                    { loader: 'expose-loader', options: 'Parsley' },
+                    'imports-loader?jQuery=>window.jQuery,$=>window.jQuery'
+                ]
+            },
+            {
+                test: resolve('packery'),
                 loader: 'imports-loader?define=>false&this=>window'
             }
         ]
