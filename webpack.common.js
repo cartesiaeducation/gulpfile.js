@@ -35,7 +35,7 @@ module.exports = {
                 test: resolve('parsleyjs'),
                 use: [
                     { loader: 'expose-loader', options: 'Parsley' },
-                    'imports-loader?jQuery=>window.jQuery,$=>window.jQuery'
+                    'imports-loader?jQuery=>window.jQuery,$=>window.jQuery,define=>false,require=>false,exports=>false,this=>window'
                 ]
             },
             {
