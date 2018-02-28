@@ -2,6 +2,9 @@ module.exports = {
     output: {
         filename: "[name].js"
     },
+    resolve: {
+        symlinks: false
+    },
     module: {
         rules: [
             {
@@ -42,7 +45,10 @@ module.exports = {
 function resolve(module) {
     return path => {
         let modulePath = null;
-        try { modulePath = require.resolve(module) } catch (e) {}
+        try {
+            modulePath = require.resolve(module)
+        } catch (e) {
+        }
         return modulePath === path;
     }
 }
