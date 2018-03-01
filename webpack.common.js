@@ -25,6 +25,10 @@ module.exports = {
                 ]
             },
             {
+                test: resolve('bootstrap'),
+                use: "imports-loader?jQuery=>window.jQuery,$=>window.jQuery"
+            },
+            {
                 test: resolve('tether'),
                 use: [
                     { loader: 'expose-loader', options: 'Tether' }
